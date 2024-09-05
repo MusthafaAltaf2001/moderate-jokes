@@ -49,7 +49,7 @@ app.post('/login', authController.login); // Login route is public
         const result = await lastValueFrom(submitJokes.send(pattern, req.body))
 
         // Add the moderated joke to the deliver joke microservice
-        await lastValueFrom(deliverJokes.send({ cmd: 'add-moderated-joke' }, req.body.content, req.body.type))
+        await lastValueFrom(deliverJokes.send({ cmd: 'add-moderated-joke' }, req.body))
 
         res.json(result)
     })
